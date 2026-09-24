@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>АРХИВ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="app">
+
+    <!-- ГЛАВНОЕ МЕНЮ -->
+    <section id="menu" class="screen active">
+
+        <div class="logo">
+            <div class="logo-small">СИСТЕМА</div>
+
+            <h1>АРХИВ</h1>
+
+            <div class="line"></div>
+
+            <p>Мир историй, которые ещё не закончились</p>
+        </div>
+
+        <div class="menu-buttons">
+
+            <button onclick="startGame()">
+                НОВОЕ ПРИКЛЮЧЕНИЕ
+            </button>
+
+            <button onclick="startFreeMode()">
+                СВОБОДНЫЙ РЕЖИМ
+            </button>
+
+            <button onclick="showStories()">
+                📖 ГОТОВЫЕ ИСТОРИИ
+            </button>
+
+            <button onclick="showCreator()">
+                ✍️ СОЗДАТЬ ИСТОРИЮ
+            </button>
+
+            <button onclick="showMessage('Некоторые тайны Архива лучше находить самостоятельно...')">
+                🔐 СЕКРЕТЫ
+            </button>
+
+        </div>
+
+        <div class="version">
+            ARCHIVE // v1.0
+        </div>
+
+    </section>
+
+
+    <!-- СОЗДАНИЕ ПЕРСОНАЖА -->
+    <section id="character" class="screen">
+
+        <div class="panel">
+
+            <h2>СОЗДАНИЕ ПЕРСОНАЖА</h2>
+
+            <p>
+                Прежде чем войти в Архив,<br>
+                назови себя.
+            </p>
+
+            <input
+                id="playerName"
+                type="text"
+                maxlength="20"
+                placeholder="Имя персонажа"
+            >
+
+            <button onclick="createCharacter()">
+                ВОЙТИ В АРХИВ
+            </button>
+
+            <button class="back" onclick="showScreen('menu')">
+                НАЗАД
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- СВОБОДНЫЙ РЕЖИМ -->
+    <section id="freeMode" class="screen">
+
+        <div class="game-header">
+
+            <span id="playerDisplay">
+                👤 Игрок
+            </span>
+
+            <button onclick="showInventory()">
+                🎒 ИНВЕНТАРЬ
+            </button>
+
+            <button onclick="showScreen('menu')">
+                ⏎ МЕНЮ
+            </button>
+
+        </div>
+
+
+        <div class="world">
+
+            <div class="world-title">
+                СВОБОДНЫЙ РЕЖИМ
+            </div>
+
+            <div class="location-panel">
+
+                <h2 id="locationName">
+                    📍 Центральная зона
+                </h2>
+
+                <p id="worldText">
+                    Ты находишься в неизвестном месте Архива.
+                </p>
+
+            </div>
+
+
+            <div class="action-buttons">
+
+                <button onclick="exploreWorld()">
+                    🔎 ИССЛЕДОВАТЬ
+                </button>
+
+                <button onclick="waitForEvent()">
+                    ⏳ ПОДОЖДАТЬ
+                </button>
+
+            </div>
+
+
+            <!-- КАРТА -->
+
+            <div id="mapBox" class="map-box">
+
+                <h3>🗺️ КАРТА АРХИВА</h3>
+
+                <div id="currentLocation">
+                    📍 Центральная зона
+                </div>
+
+                <div id="locations"></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- СОБЫТИЕ -->
+
+        <div id="eventBox" class="event hidden">
+
+            <div class="event-content">
+
+                <h3 id="eventTitle"></h3>
+
+                <p id="eventText"></p>
+
+                <button onclick="closeEvent()">
+                    ПРОДОЛЖИТЬ
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ИНВЕНТАРЬ -->
+
+    <section id="inventory" class="screen">
+
+        <div class="panel">
+
+            <h2>🎒 ИНВЕНТАРЬ</h2>
+
+            <div id="inventoryList">
+                Пока здесь пусто.
+            </div>
+
+            <button onclick="showScreen('freeMode')">
+                НАЗАД
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ГОТОВЫЕ ИСТОРИИ -->
+
+    <section id="stories" class="screen">
+
+        <div class="panel">
+
+            <h2>📖 ИСТОРИИ АРХИВА</h2>
+
+            <div id="storyList"></div>
+
+            <button onclick="showScreen('menu')">
+                НАЗАД
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- СОЗДАТЕЛЬ ИСТОРИЙ -->
+
+    <section id="creator" class="screen">
+
+        <div class="panel">
+
+            <h2>✍️ СОЗДАТЬ ИСТОРИЮ</h2>
+
+            <p>
+                Здесь игрок сможет создавать
+                собственные приключения.
+            </p>
+
+            <input
+                id="storyTitle"
+                type="text"
+                maxlength="50"
+                placeholder="Название истории"
+            >
+
+            <textarea
+                id="storyText"
+                maxlength="1000"
+                placeholder="Начало истории..."
+            ></textarea>
+
+            <button onclick="createStory()">
+                СОХРАНИТЬ ИСТОРИЮ
+            </button>
+
+            <button onclick="showScreen('menu')">
+                НАЗАД
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- СООБЩЕНИЕ -->
+
+    <div id="message" class="message hidden">
+
+        <div class="message-box">
+
+            <p id="messageText"></p>
+
+            <button onclick="closeMessage()">
+                OK
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="game.js"></script>
+
+</body>
+</html>
