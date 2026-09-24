@@ -1,0 +1,287 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background:
+        radial-gradient(circle at top, #25234a, #090912 65%);
+    color: white;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+button {
+    border: 1px solid #7165ff;
+    border-radius: 10px;
+    padding: 14px 18px;
+    background: rgba(48, 43, 105, 0.55);
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: rgba(88, 77, 190, 0.85);
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(113, 101, 255, 0.4);
+}
+
+#app {
+    min-height: 100vh;
+}
+
+.screen {
+    display: none;
+    min-height: 100vh;
+    padding: 25px;
+}
+
+.screen.active {
+    display: flex;
+}
+
+
+/* =========================
+   ГЛАВНОЕ МЕНЮ
+   ========================= */
+
+#menu {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.logo {
+    margin-bottom: 40px;
+}
+
+.logo-small {
+    color: #9b8cff;
+    font-size: 13px;
+    letter-spacing: 6px;
+    margin-bottom: 8px;
+}
+
+.logo h1 {
+    margin: 0;
+    font-size: clamp(55px, 15vw, 110px);
+    letter-spacing: 12px;
+    text-shadow:
+        0 0 10px #8c7cff,
+        0 0 30px #6254ff;
+}
+
+.line {
+    width: 180px;
+    height: 2px;
+    margin: 15px auto;
+    background: #8c7cff;
+    box-shadow: 0 0 15px #8c7cff;
+}
+
+.logo p {
+    color: #aaa8c5;
+    max-width: 500px;
+}
+
+.menu-buttons {
+    width: min(90%, 440px);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.version {
+    position: fixed;
+    bottom: 15px;
+    color: #55536b;
+    font-size: 11px;
+}
+
+
+/* =========================
+   ПАНЕЛИ
+   ========================= */
+
+.panel {
+    width: min(92%, 550px);
+    margin: auto;
+    padding: 30px;
+    border: 1px solid #49436e;
+    border-radius: 18px;
+    background: rgba(15, 14, 30, 0.9);
+    box-shadow: 0 0 40px rgba(72, 62, 180, 0.2);
+    text-align: center;
+}
+
+.panel h2 {
+    color: #aaa0ff;
+}
+
+.panel p {
+    color: #b7b4c9;
+    line-height: 1.6;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 14px;
+    margin: 12px 0;
+    border: 1px solid #514b79;
+    border-radius: 10px;
+    outline: none;
+    background: #0d0c18;
+    color: white;
+}
+
+textarea {
+    min-height: 180px;
+    resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #8c7cff;
+    box-shadow: 0 0 12px rgba(140, 124, 255, 0.3);
+}
+
+.back {
+    margin-top: 10px;
+    background: transparent;
+}
+
+
+/* =========================
+   СВОБОДНЫЙ РЕЖИМ
+   ========================= */
+
+#freeMode {
+    flex-direction: column;
+}
+
+.game-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #302d49;
+    padding-bottom: 15px;
+}
+
+#playerDisplay {
+    margin-right: auto;
+    color: #aaa0ff;
+    font-weight: bold;
+}
+
+.world {
+    width: min(95%, 850px);
+    margin: auto;
+    text-align: center;
+}
+
+.world-title {
+    font-size: clamp(30px, 8vw, 55px);
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px #7165ff;
+}
+
+.location-panel {
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #49436e;
+    border-radius: 16px;
+    background: rgba(15, 14, 30, 0.7);
+}
+
+.location-panel h2 {
+    color: #aaa0ff;
+}
+
+#worldText {
+    color: #aaa8c5;
+    line-height: 1.7;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   КАРТА
+   ========================= */
+
+.map-box {
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #49436e;
+    border-radius: 18px;
+    background: rgba(15, 14, 30, 0.85);
+    box-shadow: 0 0 30px rgba(72, 62, 180, 0.2);
+}
+
+.map-box h3 {
+    color: #aaa0ff;
+    margin-top: 0;
+}
+
+#currentLocation {
+    margin: 15px 0;
+    color: #ddd;
+    font-weight: bold;
+}
+
+#locations {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+#locations button {
+    flex: 1 1 180px;
+}
+
+
+/* =========================
+   СОБЫТИЯ
+   ========================= */
+
+.event {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.78);
+}
+
+.event.hidden {
+    display: none;
+}
+
+.event-content {
+    width: min(92%, 500px);
+    padding: 30px;
+    border: 1px solid #7165ff;
+    border-radius: 18px;
+    background: #111020;
+    text-align: center;
+    box-shadow: 0 0 40px rgba(
