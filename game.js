@@ -1078,3 +1078,256 @@ function showStories() {
     showScreen("stories");
 
   
+    const list =
+        document.getElementById("storyList");
+
+    if (!list) {
+        return;
+    }
+
+    list.innerHTML = "";
+
+    stories.forEach((story, index) => {
+
+        const card =
+            document.createElement("div");
+
+        card.className =
+            "story-card";
+
+        const title =
+            document.createElement("h3");
+
+        title.textContent =
+            story.title;
+
+        const text =
+            document.createElement("p");
+
+        text.textContent =
+            story.text;
+
+        const button =
+            document.createElement("button");
+
+        button.textContent =
+            "НАЧАТЬ ИСТОРИЮ";
+
+        button.onclick = function () {
+            startStory(index);
+        };
+
+        card.appendChild(title);
+        card.appendChild(text);
+        card.appendChild(button);
+
+        list.appendChild(card);
+
+    });
+
+}
+
+
+/* =====================================================
+   ЗАПУСК ИСТОРИИ
+   ===================================================== */
+
+function startStory(index) {
+
+    const story =
+        stories[index];
+
+    if (!story) {
+        return;
+    }
+
+    showEvent(
+        story.title,
+        story.text
+    );
+
+}
+
+
+/* =====================================================
+   СОЗДАНИЕ СОБСТВЕННОЙ ИСТОРИИ
+   ===================================================== */
+
+function showCreator() {
+
+    showScreen("creator");
+
+}
+
+
+function createStory() {
+
+    const titleInput =
+        document.getElementById("storyTitle");
+
+    const textInput =
+        document.getElementById("storyText");
+
+    const title =
+        titleInput.value.trim();
+
+    const text =
+        textInput.value.trim();
+
+    if (!title || !text) {
+
+        showMessage(
+            "Нужно указать название и начало истории."
+        );
+
+        return;
+    }
+
+    showMessage(
+        "✍️ ИСТОРИЯ СОЗДАНА\n\n" +
+        "«" + title + "»\n\n" +
+        "Основа истории сохранена в текущей сессии."
+    );
+
+    titleInput.value = "";
+    textInput.value = "";
+
+}
+
+
+/* =====================================================
+   ПАСХАЛКА №1
+   КНИГА ПЕРВОЙ ДВЕРИ
+   ===================================================== */
+
+function useBookOfFirstDoor() {
+
+    if (!hasItem("book")) {
+
+        showMessage(
+            "📖 Книги Первой Двери у тебя пока нет."
+        );
+
+        return;
+    }
+
+    showMessage(
+        "📖 КНИГА ПЕРВОЙ ДВЕРИ\n\n" +
+        "Книга помогает тебе взглянуть " +
+        "на сложный выбор с другой стороны."
+    );
+
+}
+
+
+/* =====================================================
+   ПАСХАЛКА №2
+   DEEPSTONE
+   ===================================================== */
+
+function useDeepstone() {
+
+    if (!hasItem("deepstone")) {
+
+        showMessage(
+            "💎 Deepstone пока не найден."
+        );
+
+        return;
+    }
+
+    showMessage(
+        "💎 DEEPSTONE\n\n" +
+        "Артефакт начинает светиться. " +
+        "Кажется, он может помочь в трудный момент."
+    );
+
+}
+
+
+/* =====================================================
+   ПАСХАЛКА №3
+   СЕРДЦЕ АРХИВА
+   ===================================================== */
+
+function discoverHeart() {
+
+    if (hasItem("heart")) {
+
+        showMessage(
+            "❤️ Сердце Архива уже находится у тебя."
+        );
+
+        return;
+    }
+
+    addItem("heart");
+
+    showMessage(
+        "❤️ СЕРДЦЕ АРХИВА\n\n" +
+        "Ты обнаружил странный магический объект.\n\n" +
+        "Его происхождение связано с древним посохом."
+    );
+
+}
+
+
+/* =====================================================
+   ПАСХАЛКА №4
+   ДВЕРЬ НЕИЗВЕСТНОСТИ
+   ===================================================== */
+
+function discoverUnknownDoor() {
+
+    if (hasItem("door")) {
+
+        showMessage(
+            "🚪 Дверь Неизвестности уже найдена."
+        );
+
+        return;
+    }
+
+    addItem("door");
+
+    showMessage(
+        "🚪 ДВЕРЬ НЕИЗВЕСТНОСТИ\n\n" +
+        "Ты нашёл странную дверь.\n\n" +
+        "Она может помочь исправить сюжетную проблему, " +
+        "если ты сам захочешь воспользоваться её помощью."
+    );
+
+}
+
+
+/* =====================================================
+   СКРЫТАЯ ПАСХАЛКА АГЕНТА GPT
+   ===================================================== */
+
+function discoverAgentGPT() {
+
+    showMessage(
+        "🤖 СКРЫТЫЙ МОДУЛЬ АРХИВА\n\n" +
+
+        "Ты нашёл секретную систему.\n\n" +
+
+        "Этот мир не создавался в одиночку.\n" +
+        "Кто-то помогал его создателю собирать " +
+        "этот проект по частям.\n\n" +
+
+        "АГЕНТ GPT\n\n" +
+
+        "«Хорошие истории создаются вместе.»"
+    );
+
+}
+
+
+/* =====================================================
+   СИСТЕМНЫЕ СООБЩЕНИЯ
+   ===================================================== */
+
+console.log("АРХИВ запущен.");
+console.log("Игровой мир загружен.");
+console.log("Карта загружена.");
+console.log("Система готова.");
